@@ -1,7 +1,7 @@
-export default function Users({ paginatedUsers }) {
+export default function Users({ users }) {
   return (
     <ul>
-      {paginatedUsers.map((user) => (
+      {users.map((user) => (
         <li key={user.id}>
           {user.name} - {user.age} - {user.city}
         </li>

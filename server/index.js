@@ -4,7 +4,7 @@ import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 
-const port = 8080;
+const port = 5050;
 
 app.use(express.json());
 
