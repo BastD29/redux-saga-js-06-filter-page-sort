@@ -5,6 +5,7 @@ export const getUsers = (req, res) => {
   });
 };
 
+// * to get raw users data
 // import { users } from "../data/users.js";
 
 // export const getUsers = (req, res) => {

@@ -5,12 +5,10 @@ import FilterPagSortReduxSagaTest3 from "./components/FilterPagSortReduxSagaTest
 
 export default function App() {
   return (
-    // <BrowserRouter>
     <Routes>
       {/* <Route path="/" element={<FilterPagSortReduxSagaTest1 />} /> */}
       {/* <Route path="/" element={<FilterPagSortReduxSagaTest2 />} /> */}
       <Route path="/" element={<FilterPagSortReduxSagaTest3 />} />
     </Routes>
-    // </BrowserRouter>
   );
 }

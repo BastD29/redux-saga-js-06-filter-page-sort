@@ -19,9 +19,11 @@ const slice = createSlice({
 });
 
 const getFilters = (state) => state.filter.filters;
+// console.log("getFilters", getFilters);
 
 // * to access individual filter
 // const getFilter = (key) => (state) => state.filter.filters[key];
+// console.log("getFilter", getFilter);
 
 export const selectors = {
   getFilters,

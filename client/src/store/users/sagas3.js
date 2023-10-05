@@ -2,8 +2,10 @@ import { call, fork, put, select, takeLatest } from "redux-saga/effects";
 import { usersActions } from ".";
 
 import { paginationActions, paginationSelectors } from "../pagination";
-import { GetUsers } from "../../services/users.service2";
+
 import { filterSelectors } from "../filter";
+import { sortSelectors } from "../sort";
+import { GetUsers } from "../../services/users.service3";
 
 export const SAGA_FLOW_NAME = {
   GET_USERS: "GET_USERS",
@@ -25,9 +27,20 @@ function* getUsers(action) {
     const filters = yield select(filterSelectors.getFilters);
     console.log("filters", filters);
 
+    // * SORT PARAMS
+
+    const sortParams = yield select(sortSelectors.getSortParams);
+    console.log("sortParams", sortParams);
+
     yield put(usersActions.setLoading(true));
 
-    const response = yield call(GetUsers, currentPage, pageSize, filters);
+    const response = yield call(
+      GetUsers,
+      currentPage,
+      pageSize,
+      filters,
+      sortParams
+    );
     console.log("response", response);
 
     const { data, totalPages } = response.data;
