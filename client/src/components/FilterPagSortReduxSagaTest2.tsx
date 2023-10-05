@@ -4,8 +4,11 @@ import { usersSagaActions, usersSelectors } from "../store/users";
 import Users from "./Users";
 import { paginationActions, paginationSelectors } from "../store/pagination";
 import Pagination from "./Pagination";
+import { filterActions, filterSelectors } from "../store/filter";
+import Select from "./Select";
+import Search from "./Search";
 
-export default function FilterPagSortReduxSagaTest1() {
+export default function FilterPagSortReduxSagaTest2() {
   const dispatch = useDispatch();
 
   // * USERS
@@ -18,6 +21,35 @@ export default function FilterPagSortReduxSagaTest1() {
   const error = useSelector(usersSelectors.getError);
   console.log("error", error);
 
+  // * FILTERS
+
+  const nameFilter = useSelector(filterSelectors.getNameFilter);
+  console.log("nameFilter", nameFilter);
+
+  const ageFilter = useSelector(filterSelectors.getAgeFilter);
+  console.log("ageFilter", ageFilter);
+
+  const cityFilter = useSelector(filterSelectors.getCityFilter);
+  console.log("cityFilter", cityFilter);
+
+  const handleNameFilterChange = (newName) => {
+    console.log("newName", newName);
+    dispatch(filterActions.setNameFilter(newName));
+    dispatch(paginationActions.setCurrentPage(1));
+  };
+
+  const handleAgeFilterChange = (newAge) => {
+    console.log("newAge", newAge);
+    dispatch(filterActions.setAgeFilter(newAge));
+    dispatch(paginationActions.setCurrentPage(1));
+  };
+
+  const handleCityFilterChange = (newCity) => {
+    console.log("newCity", newCity);
+    dispatch(filterActions.setCityFilter(newCity));
+    dispatch(paginationActions.setCurrentPage(1));
+  };
+
   // * PAGINATION
 
   const currentPage = useSelector(paginationSelectors.getCurrentPage);
@@ -28,15 +60,15 @@ export default function FilterPagSortReduxSagaTest1() {
 
   useEffect(() => {
     dispatch(usersSagaActions.sagaGetUsers());
-  }, [currentPage, totalItems, pageSize]);
+  }, [currentPage, totalItems, pageSize, nameFilter, ageFilter, cityFilter]);
 
   const handlePageChange = (newPage) => {
     dispatch(paginationActions.setCurrentPage(newPage));
   };
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  // if (loading) {
+  //   return <p>Loading...</p>;
+  // }
 
   if (error) {
     return <p>Error: {error}</p>;
@@ -48,6 +80,16 @@ export default function FilterPagSortReduxSagaTest1() {
 
   return (
     <>
+      <Search
+        onNameFilterChange={handleNameFilterChange}
+        nameFilter={nameFilter}
+      />
+      <Select
+        onCityFilterChange={handleCityFilterChange}
+        onAgeFilterChange={handleAgeFilterChange}
+        ageFilter={ageFilter}
+        cityFilter={cityFilter}
+      />
       <Users users={users} />
       <Pagination
         currentPage={currentPage}

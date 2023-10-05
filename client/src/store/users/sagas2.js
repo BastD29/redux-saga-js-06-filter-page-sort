@@ -3,6 +3,7 @@ import { usersActions } from ".";
 
 import { paginationActions, paginationSelectors } from "../pagination";
 import { GetUsers } from "../../services/users.service2";
+import { filterSelectors } from "../filter";
 
 export const SAGA_FLOW_NAME = {
   GET_USERS: "GET_USERS",
@@ -19,9 +20,23 @@ function* getUsers(action) {
     const pageSize = yield select(paginationSelectors.getPageSize);
     console.log("pageSize", pageSize);
 
+    // * FILTERS
+
+    const nameFilter = yield select(filterSelectors.getNameFilter);
+    console.log("nameFilter", nameFilter);
+    const ageFilter = yield select(filterSelectors.getAgeFilter);
+    console.log("ageFilter", ageFilter);
+    const cityFilter = yield select(filterSelectors.getCityFilter);
+    console.log("cityFilter", cityFilter);
+
     yield put(usersActions.setLoading(true));
 
-    const response = yield call(GetUsers, currentPage, pageSize);
+    const response = yield call(GetUsers, currentPage, pageSize, {
+      name: nameFilter,
+      age: ageFilter,
+      city: cityFilter,
+    });
+    // const response = yield call(GetUsers, currentPage, pageSize);
     console.log("response", response);
 
     const { data, totalPages } = response.data;

@@ -1,12 +1,12 @@
-export default function Search({ filters, onFilterChange }) {
+export default function Search({ onNameFilterChange, nameFilter }) {
   return (
     <>
       <label>
         Search by name:
         <input
           type="text"
-          value={filters.name}
-          onChange={(e) => onFilterChange("name", e.target.value)}
+          value={nameFilter}
+          onChange={(e) => onNameFilterChange(e.target.value)}
         />
       </label>
     </>

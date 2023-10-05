@@ -1,11 +1,16 @@
-export default function Select({ filters, onFilterChange }) {
+export default function Select({
+  onCityFilterChange,
+  onAgeFilterChange,
+  ageFilter,
+  cityFilter,
+}) {
   return (
     <>
       <label>
         Filter by city:
         <select
-          value={filters.city}
-          onChange={(e) => onFilterChange("city", e.target.value)}
+          value={cityFilter}
+          onChange={(e) => onCityFilterChange(e.target.value)}
         >
           <option value="all">All</option>
           <option value="new york">New York</option>
@@ -16,8 +21,8 @@ export default function Select({ filters, onFilterChange }) {
       <label>
         Filter by age:
         <select
-          value={filters.age}
-          onChange={(e) => onFilterChange("age", e.target.value)}
+          value={ageFilter}
+          onChange={(e) => onAgeFilterChange(e.target.value)}
         >
           <option value="all">All</option>
           <option value="21">21</option>

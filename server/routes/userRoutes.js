@@ -6,9 +6,9 @@ const router = express.Router();
 
 router.get(
   "/",
-  // userMiddlewares.filterUsers,
-  // userMiddlewares.sortUsers,
+  userMiddlewares.filterUsers,
   userMiddlewares.paginateUsers,
+  // userMiddlewares.sortUsers,
   userController.getUsers
 );
 
