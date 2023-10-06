@@ -12,7 +12,7 @@ export const GetUsers = async (currentPage, pageSize, filters, sortParams) => {
     .map(([key, value]) => `sort_${key}=${encodeURIComponent(value)}`)
     .join("&");
 
-  return await fetcher({
+  return fetcher({
     method: "get",
     url: `${USERS}?page=${currentPage}&size=${pageSize}&${filterQuery}&${sortQuery}`,
   });

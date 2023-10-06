@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 // components
 import Users from "./Users";
@@ -8,12 +8,12 @@ import Search from "./Search";
 import Sort from "./Sort";
 
 // hooks
-import { useUsers } from "../hooks/useUsers";
-import { useFilters } from "../hooks/useFilters";
-import { useSorting } from "../hooks/useSorting";
-import { usePagination } from "../hooks/usePagination";
+import { useUsers } from "../hooks/users/useUsers1";
+import { useFilters } from "../hooks/filters/useFilters1";
+import { useSorting } from "../hooks/sorting/useSorting1";
+import { usePagination } from "../hooks/pagination/usePagination1";
 
-export default function FilterPagSortReduxSagaTest3() {
+export default function FilterPagSortReduxSagaTest4() {
   const { loading, users, error } = useUsers();
   const { filters, handleFilterChange } = useFilters();
   const { sortParams, handleSortChange } = useSorting();

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { filterActions, filterSelectors } from "../store/filter";
-import { paginationActions } from "../store/pagination";
+import { filterActions, filterSelectors } from "../../store/filter";
+import { paginationActions } from "../../store/pagination";
 
 export const useFilters = () => {
   const dispatch = useDispatch();

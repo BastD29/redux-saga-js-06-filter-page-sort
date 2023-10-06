@@ -15,7 +15,7 @@ import Select from "./Select";
 import Search from "./Search";
 import Sort from "./Sort";
 
-export default function FilterPagSortReduxSagaTest4() {
+export default function FilterPagSortReduxSagaTest3() {
   const dispatch = useDispatch();
 
   // * USERS

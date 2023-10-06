@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { paginationActions, paginationSelectors } from "../store/pagination";
+import { paginationActions, paginationSelectors } from "../../store/pagination";
 
 export const usePagination = () => {
   const dispatch = useDispatch();
@@ -7,7 +7,6 @@ export const usePagination = () => {
   const currentPage = useSelector(paginationSelectors.getCurrentPage);
   const pageSize = useSelector(paginationSelectors.getPageSize);
   const totalItems = useSelector(paginationSelectors.getTotalItems);
-
   const totalPages = Math.ceil(totalItems / pageSize);
 
   const handlePageChange = (newPage) => {
